@@ -8,7 +8,7 @@ ENV CI=true
 
 ENV prod=true
 
-RUN npm install -g pnpm pm2
+RUN npm install -g pnpm pm2 markmap-cli
 
 RUN pnpm install && pnpm build
 
