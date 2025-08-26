@@ -3,7 +3,8 @@ import { exec } from 'child_process';
 
 
 class MarkmapService {
-  async generate(markdown: string): Promise<Blob> {
+  async generate(markdown: string, offline?: boolean): Promise<Blob> {
+
     // 生成时间戳
     const timestamp = Date.now();
     // 构建文件路径
@@ -16,9 +17,11 @@ class MarkmapService {
     await fs.promises.writeFile(filePath, markdown, 'utf-8');
     
     // 执行markmap-cli命令
+    const offlineFlag = offline === true ? '--offline' : '';
     await new Promise((resolve, reject) => {
-      exec(`npx markmap-cli ${filePath} --no-open`, (error, stdout, stderr) => {
+      exec(`npx markmap-cli ${filePath} --no-open ${offlineFlag}`, (error, stdout, stderr) => {
         if (error) {
+          console.log(stderr)
           reject(error);
           return;
         }

@@ -7,8 +7,8 @@ class MarkmapController {
   public generate: RequestHandler = async (req: Request, res: Response) => {
     try {
       const validatedData = MarkmapSchema.parse(req.body);
-      const { markdown } = validatedData;
-      const serviceResponse = await markmapService.generate(markdown);
+      const { markdown, offline } = validatedData;
+      const serviceResponse = await markmapService.generate(markdown, offline);
       
       // 设置响应头，让浏览器直接下载文件
       res.setHeader('Content-Type', 'text/html');
