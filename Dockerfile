@@ -10,7 +10,11 @@ ENV prod=true
 
 RUN npm install -g pnpm pm2 markmap-cli
 
+RUN npm cache add markmap-cli
+
 RUN pnpm install && pnpm build
+
+RUN npm config set offline true
 
 EXPOSE 1337
 

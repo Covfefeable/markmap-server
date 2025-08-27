@@ -131,23 +131,7 @@ Content-Type: application/json
   - `true`: 生成包含所有资源的离线 HTML 文件
   - `false` 或未提供: 生成依赖 CDN 资源的在线版本
 
-### 用户接口
 
-#### 用户登录
-```http
-POST /api/login
-Content-Type: application/json
-
-{
-  "username": "your-username",
-  "password": "your-password"
-}
-```
-
-#### 用户登出
-```http
-GET /api/logout
-```
 
 ## 🐳 Docker 部署
 

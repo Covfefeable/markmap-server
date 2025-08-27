@@ -19,7 +19,7 @@ class MarkmapService {
     // 执行markmap-cli命令
     const offlineFlag = offline === true ? '--offline' : '';
     await new Promise((resolve, reject) => {
-      exec(`npx markmap-cli ${filePath} --no-open ${offlineFlag}`, (error, stdout, stderr) => {
+      exec(`npx ${offlineFlag} markmap-cli ${filePath} --no-open ${offlineFlag}`, (error, stdout, stderr) => {
         if (error) {
           console.log(stderr)
           reject(error);

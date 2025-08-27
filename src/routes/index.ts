@@ -1,6 +1,7 @@
 import { Express, Request, Response, Router } from "express";
 import { commonRes } from "../utils/response";
 import { markmapRoutes } from "./markmap";
+import { staticHtml } from "../utils/const";
 
 export interface RouterConf {
   path: string;
@@ -25,7 +26,7 @@ const routerConf: Array<RouterConf> = [
 function routes(app: Express) {
   // 根目录
   app.get("/", (req: Request, res: Response) =>
-    res.status(200).send("express server is running...")
+    res.status(200).send(staticHtml)
   );
 
   routerConf.forEach((conf) => app.use(conf.path, conf.router));
